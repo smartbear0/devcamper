@@ -9,7 +9,7 @@ exports.getBootcamps = (req, res, next) => {
 }
 
 // @desc        Get a single bootcamp
-// @route       Get /api/v1/bootcamp/:id
+// @route       Get /api/v1/bootcamps/:id
 // @access      Public
 exports.getBootcamp = (req, res, next) => {
     res.status(200).json( { 
@@ -19,7 +19,7 @@ exports.getBootcamp = (req, res, next) => {
 } 
 
 // @desc        Create a new bootcamp 
-// @route       POST /
+// @route       POST /api/v1/bootcamps
 // @access      Private
 exports.createBootcamp = (req, res, next) => {
     res.status(200).json( { 
@@ -29,7 +29,7 @@ exports.createBootcamp = (req, res, next) => {
 } 
 
 // @desc        Update existing bootcamp
-// @route       PUT /
+// @route       PUT /api/v1/bootcamps/:id
 // @access      Private
 exports.updateBootcamp = (req, res, next) => {
     res.status(200).json( { 
@@ -39,7 +39,7 @@ exports.updateBootcamp = (req, res, next) => {
 } 
 
 // @desc        Delete a bootcamp
-// @route       Delete /
+// @route       Delete /api/v1/bootcamps/:id
 // @access      Private
 exports.deleteBootcamp = (req, res, next) => {
     res.status(200).json( { 

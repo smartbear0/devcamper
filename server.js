@@ -1,21 +1,32 @@
-const express = require('express')
-const app = express() 
-const dotenv = require('dotenv')
+const express = require("express");
+const app = express();
+const dotenv = require("dotenv");
+// const logger = require("./middleware/logger");
+const morgan = require("morgan");
 // 1.bringing/using bootcamps.js file from the route folder
-const bootcamps  = require('./routes/bootcamps.js')
+//Route files
+const bootcamps = require("./routes/bootcamps.js");
 
 //loading the dot-enviroment variables from the config/config.env
-dotenv.config({ path: './config/config.env' })
+//Load env variables
+dotenv.config({ path: "./config/config.env" });
+
+// DEV logging middleware
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 // 2.replacing the url(/api/v1/bootcamps) with the variable bootcamps,
 // for each router.method(get, post, put, delete) in the bootcamps.js file
-app.use('/api/v1/bootcamps', bootcamps)
-  
+//Mount routers
+app.use("/api/v1/bootcamps", bootcamps);
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
-    console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}...`)
-})
+  console.log(
+    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}...`
+  );
+});
 
 //https://gist.github.com/bradtraversy/01adb248df70fb29e98c30cf659042cf
 //https://github.com/bradtraversy/devcamper-api/tree/master
