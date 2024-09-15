@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
-// const logger = require("./middleware/logger");
 const morgan = require("morgan");
+const connectDB = require("./config/mongoose.js");
+
 // 1.bringing/using bootcamps.js file from the route folder
 //Route files
 const bootcamps = require("./routes/bootcamps.js");
@@ -10,6 +11,9 @@ const bootcamps = require("./routes/bootcamps.js");
 //loading the dot-enviroment variables from the config/config.env
 //Load env variables
 dotenv.config({ path: "./config/config.env" });
+
+//Connect to the Mongo database
+connectDB();
 
 // DEV logging middleware
 if (process.env.NODE_ENV === "development") {
